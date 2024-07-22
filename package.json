@@ -1,0 +1,29 @@
+{
+  "name": "backend-nodelabs-id",
+  "scripts": {
+    "dev": "run-p dev:*",
+    "dev:wrangler": "wrangler pages dev dist --live-reload",
+    "dev:esbuild": "esbuild --bundle src/server.ts --format=esm --watch --outfile=dist/_worker.js",
+    "build": "esbuild --bundle src/server.ts --format=esm --outfile=dist/_worker.js",
+    "deploy": "wrangler pages publish dist",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:status": "prisma migrate status",
+    "generate": "prisma generate",
+    "env": "dotenv -e .dev.vars"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.17.0",
+    "cors": "^2.8.5",
+    "hono": "^4.5.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240718.0",
+    "@eslint/js": "^9.7.0",
+    "eslint": "^9.7.0",
+    "globals": "^15.8.0",
+    "npm-run-all": "^4.1.5",
+    "prisma": "^5.17.0",
+    "wrangler": "^3.57.2"
+  }
+}
